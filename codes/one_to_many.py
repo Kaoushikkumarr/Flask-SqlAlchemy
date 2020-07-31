@@ -1,10 +1,10 @@
 """
 Defining one to many relationship
 """
-
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
+''' creating the object'''
 app = Flask(__name__)
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://scott://tiger@localhost/mydatabase'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///relationships.db'
@@ -25,6 +25,7 @@ class Person(db.Model):
 
 
 class Pet(db.Model):
+
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(20))
     owner_id = db.Column(db.Integer, db.ForeignKey('person.id'))
